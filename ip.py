@@ -7,11 +7,7 @@ IPV4_HEADER_DEF_SIZE = 20
 def disable_nbits(orig_data, nbits):
     strBits = bin(orig_data)[2:]
     newLista = [int(bit) if i < len(strBits) - nbits else 0 for i, bit in enumerate(strBits)]
-    return int(''.join(map(str, newLista)), 2)
-
-def get_checksum(header):
-    return struct.pack("!H", calc_checksum(header))
-
+    return int(''.join(map(str, newLista)), 2
 def icmp_header(seg):
     header_struct = struct.pack('!BBHII', 11, 0, 0, 0, 0)  
     dados = bytearray(header_struct)
